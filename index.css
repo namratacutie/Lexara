@@ -23,21 +23,23 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    /* Changed from center to allow scrolling from top */
+    padding: 20px;
     background: radial-gradient(circle at top right, #1e293b, #0f172a);
     overflow-x: hidden;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    min-height: 80vh;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto;
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
-    padding: 40px;
+    padding: 30px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
@@ -98,14 +100,22 @@ h1 {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Responsive grid columns */
+    gap: 20px;
 }
 
 .form-group {
@@ -124,7 +134,9 @@ label {
     font-weight: 500;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
@@ -134,7 +146,8 @@ input, textarea, select {
     transition: border-color 0.3s ease;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     outline: none;
     border-color: var(--primary-color);
 }
@@ -186,11 +199,11 @@ input:focus, textarea:focus {
     border-radius: 50%;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: var(--primary-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(26px);
 }
 
@@ -216,10 +229,12 @@ input:checked + .slider:before {
     transform: translateY(0);
 }
 
-#case-plaintiff, #case-defendant {
+#case-plaintiff,
+#case-defendant {
     display: none;
 }
 
-#case-plaintiff.active, #case-defendant.active {
+#case-plaintiff.active,
+#case-defendant.active {
     display: block;
 }
