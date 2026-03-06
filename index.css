@@ -65,7 +65,7 @@ h1 {
     display: flex;
     gap: 10px;
     margin-bottom: 30px;
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     padding-bottom: 10px;
 }
 
@@ -82,9 +82,9 @@ h1 {
 }
 
 .tab-btn.active {
-    background: var(--glass-border);
+    background: white;
     color: var(--text-main);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .tab-btn:hover:not(.active) {
@@ -116,7 +116,6 @@ h1 {
 .form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* Responsive grid columns */
     gap: 20px;
 }
 
@@ -219,7 +218,7 @@ input:checked+.slider:before {
     border-radius: 14px;
     font-weight: 700;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
     margin-top: 30px;
     align-self: flex-start;
 }
@@ -227,10 +226,7 @@ input:checked+.slider:before {
 .btn-primary:hover {
     background: var(--primary-hover);
     transform: translateY(-2px);
-}
-
-.btn-primary:active {
-    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 #case-plaintiff,
@@ -241,4 +237,19 @@ input:checked+.slider:before {
 #case-plaintiff.active,
 #case-defendant.active {
     display: block;
+}
+
+#report {
+    max-width: 100%;
+}
+
+#report-output {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    color: var(--text-main);
 }
