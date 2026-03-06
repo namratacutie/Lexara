@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexara - Legal Management System</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lexara</h1>
+            <p style="color: var(--text-muted);">Secure Legal Case Management</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('client-info')">Client Information</button>
+            <button class="tab-btn" onclick="switchTab('case-info')">Case Details</button>
+            <button class="tab-btn" onclick="switchTab('report')">Case Report</button>
+        </div>
+
+        <!-- Client Info Tab -->
+        <div id="client-info" class="tab-content active">
+            <form id="client-form" class="form-grid">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" required placeholder="Enter first name">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" required placeholder="Enter last name">
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="citizenship">Citizenship Number</label>
+                    <input type="text" id="citizenship" placeholder="e.g. 12-34-56-789">
+                </div>
+                <div class="form-group">
+                    <label for="national-id">National ID Number</label>
+                    <input type="text" id="national-id" placeholder="Enter NID">
+                </div>
+                <div class="form-group full-width">
+                    <label for="perm-address">Permanent Address</label>
+                    <textarea id="perm-address" rows="2" placeholder="Street, City, State"></textarea>
+                </div>
+                <div class="form-group full-width">
+                    <label for="temp-address">Temporary Address</label>
+                    <textarea id="temp-address" rows="2" placeholder="Street, City, State"></textarea>
+                </div>
+            </form>
+            <button type="button" class="btn-primary" onclick="switchTab('case-info')">Next: Case Details</button>
+        </div>
+
+        <!-- Case Details Tab -->
+        <div id="case-info" class="tab-content">
+            <div class="toggle-container">
+                <span id="label-plaintiff" style="font-weight: 600; color: var(--accent-blue);">Plaintiff</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="case-type-toggle" onchange="toggleCaseType()">
+                    <span class="slider"></span>
+                </label>
+                <span id="label-defendant" style="color: var(--text-muted);">Defendant</span>
+            </div>
+
+            <div id="case-plaintiff" class="active">
+                <h3 style="margin-bottom: 20px; color: var(--accent-blue);">Plaintiff Details (Sue)</h3>
+                <div class="form-group full-width">
+                    <label>Grounds for Suit</label>
+                    <textarea id="plaintiff-details" rows="6" placeholder="Describe why the client is suing..."></textarea>
+                </div>
+            </div>
+
+            <div id="case-defendant">
+                <h3 style="margin-bottom: 20px; color: var(--accent-purple);">Defendant Details (Defense)</h3>
+                <div class="form-group full-width">
+                    <label>Defense Statement</label>
+                    <textarea id="defendant-details" rows="6" placeholder="Describe the defense strategy..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-group full-width" style="margin-top: 24px;">
+                <label for="keywords">Case Keywords (Linking)</label>
+                <input type="text" id="keywords" placeholder="e.g. Property, Divorce, Contract (comma separated)">
+            </div>
+
+            <button type="button" class="btn-primary" onclick="generateReport()">Generate Final Report</button>
+        </div>
+
+        <!-- Report Tab -->
+        <div id="report" class="tab-content">
+            <div id="report-output" style="background: rgba(0,0,0,0.3); padding: 30px; border-radius: 16px; border: 1px solid var(--glass-border);">
+                <p style="color: var(--text-muted); text-align: center;">Fill out client and case details to generate report.</p>
+            </div>
+            <button class="btn-primary" onclick="window.print()">Print/Download PDF</button>
+        </div>
+    </div>
+
+    <script src="new.js"></script>
+</body>
+</html>
