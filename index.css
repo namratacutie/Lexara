@@ -253,3 +253,67 @@ input:checked+.slider:before {
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
     color: var(--text-main);
 }
+
+@media print {
+    body {
+        background: white !important;
+        padding: 0 !important;
+        color: black !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        display: block !important;
+    }
+
+    header,
+    .tabs,
+    .btn-primary,
+    #client-info,
+    #case-info {
+        display: none !important;
+    }
+
+    #report {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    #report-output {
+        background: white !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        color: black !important;
+    }
+
+    #report-output h2 {
+        color: black !important;
+        border-bottom: 2px solid #333 !important;
+        margin-top: 0 !important;
+        padding-bottom: 10px !important;
+    }
+
+    #report-output strong {
+        color: #111 !important;
+        font-weight: 700 !important;
+    }
+
+    #report-output p {
+        color: #333 !important;
+        line-height: 1.5 !important;
+    }
+
+    #report button {
+        display: none !important;
+    }
+}
