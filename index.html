@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Basic meta tags for character encoding and responsive viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lexara - Legal Management System</title>
+
+    <!-- Link to the external CSS file for styling -->
     <link rel="stylesheet" href="index.css">
+
+    <!-- Google Fonts: Pre-connecting for performance and loading the 'Inter' typeface -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
+    <!-- Main container wrapping the entire application UI -->
     <div class="container">
+        <!-- Application Header: Branding section -->
         <header>
             <h1>Lexara</h1>
             <p style="color: var(--text-muted);">Secure Legal Case Management</p>
         </header>
 
+        <!-- Navigation Tabs: Allows switching between different sections of the system -->
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('client-info')">Client Information</button>
             <button class="tab-btn" onclick="switchTab('case-info')">Case Details</button>
             <button class="tab-btn" onclick="switchTab('report')">Case Report</button>
         </div>
 
-        <!-- Client Info Tab -->
+        <!-- Section 1: Client Information tab -->
         <div id="client-info" class="tab-content active">
+            <!-- Form grid layout for better organization of inputs -->
             <form id="client-form" class="form-grid">
+                <!-- Grouping labels and inputs for semantic structure -->
                 <div class="form-group">
                     <label for="first-name">First Name</label>
                     <input type="text" id="first-name" required placeholder="Enter first name">
@@ -37,6 +49,7 @@
                     <label for="dob">Date of Birth</label>
                     <input type="date" id="dob" required>
                 </div>
+                <!-- Optional identifiers -->
                 <div class="form-group">
                     <label for="citizenship">Citizenship Number</label>
                     <input type="text" id="citizenship" placeholder="e.g. 12-34-56-789">
@@ -45,6 +58,7 @@
                     <label for="national-id">National ID Number</label>
                     <input type="text" id="national-id" placeholder="Enter NID">
                 </div>
+                <!-- Address fields spanning the full width of the grid -->
                 <div class="form-group full-width">
                     <label for="perm-address">Permanent Address</label>
                     <textarea id="perm-address" rows="2" placeholder="Street, City, State"></textarea>
@@ -54,11 +68,13 @@
                     <textarea id="temp-address" rows="2" placeholder="Street, City, State"></textarea>
                 </div>
             </form>
+            <!-- Navigation button to proceed to the next tab -->
             <button type="button" class="btn-primary" onclick="switchTab('case-info')">Next: Case Details</button>
         </div>
 
-        <!-- Case Details Tab -->
+        <!-- Section 2: Case Details tab -->
         <div id="case-info" class="tab-content">
+            <!-- Toggle Switch: Choosing between Plaintiff (Blue) and Defendant (Purple) -->
             <div class="toggle-container">
                 <span id="label-plaintiff" style="font-weight: 600; color: var(--accent-blue);">Plaintiff</span>
                 <label class="toggle-switch">
@@ -68,14 +84,17 @@
                 <span id="label-defendant" style="color: var(--text-muted);">Defendant</span>
             </div>
 
+            <!-- Dynamic content for Plaintiff role -->
             <div id="case-plaintiff" class="active">
                 <h3 style="margin-bottom: 20px; color: var(--accent-blue);">Plaintiff Details (Sue)</h3>
                 <div class="form-group full-width">
                     <label>Grounds for Suit</label>
-                    <textarea id="plaintiff-details" rows="6" placeholder="Describe why the client is suing..."></textarea>
+                    <textarea id="plaintiff-details" rows="6"
+                        placeholder="Describe why the client is suing..."></textarea>
                 </div>
             </div>
 
+            <!-- Dynamic content for Defendant role (hidden by default) -->
             <div id="case-defendant">
                 <h3 style="margin-bottom: 20px; color: var(--accent-purple);">Defendant Details (Defense)</h3>
                 <div class="form-group full-width">
@@ -84,23 +103,30 @@
                 </div>
             </div>
 
+            <!-- Keyword tagging for case classification and linkage -->
             <div class="form-group full-width" style="margin-top: 24px;">
                 <label for="keywords">Case Keywords (Linking)</label>
                 <input type="text" id="keywords" placeholder="e.g. Property, Divorce, Contract (comma separated)">
             </div>
 
+            <!-- Trigger for compiling the final report -->
             <button type="button" class="btn-primary" onclick="generateReport()">Generate Final Report</button>
         </div>
 
-        <!-- Report Tab -->
+        <!-- Section 3: Professional Report tab -->
         <div id="report" class="tab-content">
-            <div id="report-output" style="background: rgba(0,0,0,0.3); padding: 30px; border-radius: 16px; border: 1px solid var(--glass-border);">
-                <p style="color: var(--text-muted); text-align: center;">Fill out client and case details to generate report.</p>
+            <!-- Target for JavaScript-generated report content -->
+            <div id="report-output">
+                <p style="color: var(--text-muted); text-align: center;">Fill out client and case details to generate
+                    report.</p>
             </div>
-            <button class="btn-primary" onclick="window.print()">Print/Download PDF</button>
+            <!-- Browser print interface trigger -->
+            <button class="btn-primary" onclick="window.print()" style="margin-top: 20px;">Print/Download PDF</button>
         </div>
     </div>
 
+    <!-- Main JavaScript file for business logic and UI interactions -->
     <script src="new.js"></script>
 </body>
+
 </html>

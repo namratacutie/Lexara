@@ -1,16 +1,39 @@
+/* 
+   ==========================================================================
+   LEXARA DESIGN SYSTEM
+   Modern White Glassmorphism Theme
+   ========================================================================== 
+*/
+
 :root {
+    /* Primary brand colors */
     --primary-color: #6366f1;
+    /* Modern indigo */
     --primary-hover: #4f46e5;
+    /* Darker indigo for states */
+
+    /* Background and glass gradients */
     --bg-light: #f8fafc;
     --glass-bg: rgba(255, 255, 255, 0.7);
+    /* Translucent white for glass effect */
     --glass-border: rgba(255, 255, 255, 0.5);
+    /* Semi-white border for definition */
+
+    /* Typography colors */
     --text-main: #1e293b;
+    /* Slate 800 for high readability */
     --text-muted: #64748b;
+    /* Slate 500 for secondary information */
+
+    /* Accent colors for roles (Plaintiff vs Defendant) */
     --accent-blue: #0ea5e9;
     --accent-purple: #8b5cf6;
+
+    /* Form specific styles */
     --input-bg: rgba(255, 255, 255, 0.5);
 }
 
+/* Global resets for consistent cross-browser experience */
 * {
     margin: 0;
     padding: 0;
@@ -18,6 +41,7 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+/* Main body with fixed background gradient for depth */
 body {
     background-color: var(--bg-light);
     color: var(--text-main);
@@ -25,27 +49,32 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    /* Aligns to top to accommodate scrollable content */
     padding: 20px;
     background: radial-gradient(circle at top right, #e2e8f0, #f8fafc);
     background-attachment: fixed;
     overflow-x: hidden;
 }
 
+/* Main glassmorphism card */
 .container {
     width: 100%;
     max-width: 1100px;
     margin: 20px auto;
     background: var(--glass-bg);
     backdrop-filter: blur(16px);
+    /* Blur effect for the "glass" look */
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 30px;
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    /* Soft shadow for elevation */
     display: flex;
     flex-direction: column;
 }
 
+/* Header typography styling */
 header {
     margin-bottom: 40px;
     text-align: center;
@@ -54,6 +83,7 @@ header {
 h1 {
     font-size: 2.5rem;
     font-weight: 800;
+    /* Gradient text effect */
     background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
     -webkit-background-clip: text;
     background-clip: text;
@@ -61,6 +91,7 @@ h1 {
     letter-spacing: -0.02em;
 }
 
+/* Navigation tabs layout */
 .tabs {
     display: flex;
     gap: 10px;
@@ -69,6 +100,7 @@ h1 {
     padding-bottom: 10px;
 }
 
+/* Tab button base and active states */
 .tab-btn {
     background: transparent;
     border: none;
@@ -92,6 +124,7 @@ h1 {
     background: rgba(0, 0, 0, 0.03);
 }
 
+/* Tab content visibility management */
 .tab-content {
     display: none;
     animation: fadeIn 0.4s ease;
@@ -101,6 +134,7 @@ h1 {
     display: block;
 }
 
+/* Fade-in animation for tab transitions */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -113,9 +147,11 @@ h1 {
     }
 }
 
+/* Responsive form grid */
 .form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Automatically wraps on smaller screens */
     gap: 20px;
 }
 
@@ -135,6 +171,7 @@ label {
     font-weight: 500;
 }
 
+/* Standardized input styling across the app */
 input,
 textarea,
 select {
@@ -153,8 +190,10 @@ textarea:focus {
     border-color: var(--primary-color);
     background: white;
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    /* Indigo glow on focus */
 }
 
+/* Custom Toggle Switch for Plaintiff/Defendant Selection */
 .toggle-container {
     display: flex;
     align-items: center;
@@ -178,6 +217,7 @@ textarea:focus {
     height: 0;
 }
 
+/* The visual background bar of the switch */
 .slider {
     position: absolute;
     cursor: pointer;
@@ -190,6 +230,7 @@ textarea:focus {
     border-radius: 34px;
 }
 
+/* The circular thumb of the switch */
 .slider:before {
     position: absolute;
     content: "";
@@ -210,6 +251,7 @@ input:checked+.slider:before {
     transform: translateX(26px);
 }
 
+/* Primary call-to-action buttons */
 .btn-primary {
     background: var(--primary-color);
     color: white;
@@ -229,6 +271,7 @@ input:checked+.slider:before {
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
+/* Conditional visibility for case information sub-sections */
 #case-plaintiff,
 #case-defendant {
     display: none;
@@ -239,28 +282,39 @@ input:checked+.slider:before {
     display: block;
 }
 
+/* Case report section styling */
 #report {
     max-width: 100%;
 }
 
+/* Inner report output with slight inset shadow for "carved" look */
 #report-output {
     background: rgba(255, 255, 255, 0.4);
     padding: 30px;
     border-radius: 16px;
     border: 1px solid var(--glass-border);
     word-wrap: break-word;
+    /* Prevents overflow with long text */
     overflow-wrap: break-word;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
     color: var(--text-main);
 }
 
+/* 
+   ==========================================================================
+   CRITICAL: PRINT MEDIA QUERIES
+   ========================================================================== 
+*/
 @media print {
+
+    /* Clears all complex backgrounds and blurs for printers */
     body {
         background: white !important;
         padding: 0 !important;
         color: black !important;
     }
 
+    /* Reset container for full-page standardized print appearance */
     .container {
         width: 100% !important;
         max-width: none !important;
@@ -273,6 +327,7 @@ input:checked+.slider:before {
         display: block !important;
     }
 
+    /* Hiding all interactive and app-specific navigation elements */
     header,
     .tabs,
     .btn-primary,
@@ -281,6 +336,7 @@ input:checked+.slider:before {
         display: none !important;
     }
 
+    /* Ensuring the report section is the only thing printed */
     #report {
         display: block !important;
         width: 100% !important;
@@ -288,6 +344,7 @@ input:checked+.slider:before {
         padding: 0 !important;
     }
 
+    /* Professional formatting for paper output */
     #report-output {
         background: white !important;
         border: none !important;
@@ -313,6 +370,7 @@ input:checked+.slider:before {
         line-height: 1.5 !important;
     }
 
+    /* Hides the print action button on the printed page */
     #report button {
         display: none !important;
     }
